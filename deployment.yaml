@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-controller
+  labels:
+    app: test-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-controller
+  template:
+    metadata:
+      labels:
+        app: test-controller
+    spec:
+      serviceAccountName: test-controller
+      containers:
+      - name: test-controller
+        image: luigizhou/test-controller:0.0.1
